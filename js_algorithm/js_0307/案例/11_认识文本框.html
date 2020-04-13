@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="kuang">
+    <button id="btn">确定</button>
+
+    <script>
+        // 得到文本框本身
+        var kuang = document.getElementById('kuang');
+        // 得到按钮
+        var btn = document.getElementById('btn');
+
+        // 点击按钮的事件监听
+        btn.onclick = function() {
+            // 得到文本框中的值，value这个英语单词就是值的意思。
+            var a = kuang.value;
+            // 弹出来
+            alert(a);
+        };
+    </script>
+</body>
+</html>

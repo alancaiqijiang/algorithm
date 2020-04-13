@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3月7日作业-JS课程-</title>
+    <style>
+        .tishi {
+            width: 500px;
+            margin: 10px auto;
+            text-align: center;
+
+        }
+
+        span {
+
+            font-size: 32px;
+            line-height: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="tishi">
+            <h2>这是jsp课程第一天的作业</h2>
+        </div>
+
+        <div class="tishi">
+            <h1>第一题</h1>
+            <p>请输入六边形的变长</p>
+            <input type="text" id="bc">
+            <button id="btn">calculate</button>
+        </div>
+
+        <div class="tishi">
+            <span>面积结果为：</span><span id="result"></span>
+        </div>
+
+
+        <script>
+
+            var a = document.getElementById('bc')
+            var btn = document.getElementById('btn')
+            var result = document.getElementById('result')
+
+
+            btn.onclick = function () {
+
+                var d = (1.5) * (Math.sqrt(3, 2)) * (Math.pow(Number(a.value), 2))
+                result.innerHTML = d;
+            };
+
+
+
+        </script>
+
+
+
+        <!-- 第二题 -->
+
+        <div class="tishi">
+            <h1>第二题</h1>
+            <p>请输入您的身高（厘米）</p>
+            <input type="text" id="bodyHeight">
+            <p>请输入您的体重（千克）</p>
+            <input type="text" id="bodyWeight">
+        </div>
+        <div class="tishi">
+            <button id="btn2">calculate BIM</button>
+        </div>
+        <div class="tishi">
+
+            <span>BMI结果为：</span><span id="BMI"></span>
+        </div>
+
+
+        <script>
+            //读取身高和体重
+            var h = document.getElementById('bodyHeight')
+            var w = document.getElementById('bodyWeight')
+            //读取事件
+            var btn2 = document.getElementById('btn2')
+            var BMI = document.getElementById('BMI')
+
+
+            btn2.onclick = function () {
+
+                var g = (Number(w.value)) / (Math.pow(((Number(h.value)) / 100), 2))
+
+                BMI.innerHTML = g;
+            };
+
+
+        </script>
+
+        <!-- 第三题 -->
+
+
+        <div class="tishi">
+            <h1>第三题</h1>
+            <p>请输入摄氏度（C）</p>
+            <input type="text" id="Celsius">
+        </div>
+
+        <div class="tishi">
+            <button id="btn3">convert</button>
+        </div>
+
+        <div class="tishi">
+            <span>华氏度结果为：</span><span id="Fahrenheit"></span>
+        </div>
+
+        <script>
+
+            var Ce = document.getElementById('Celsius')
+
+            var btn3 = document.getElementById('btn3')
+
+
+
+            btn3.onclick = function () {
+
+                var k = (Number(Ce.value)) * (9 / 5) + 32
+                Fahrenheit.innerHTML = k;
+            };
+        </script>
+        <!-- 第四题 -->
+
+        <div class="tishi">
+            <h1>第四题</h1>
+            <img src="images/suanshi.png" alt="">
+            <p><span>结果为：</span><span id="suanshijg"></span></p>
+        </div>
+        <script>
+            var z = ((Math.pow((1+(Math.pow(2,3))),4))+5) / (6 * ((7 + 8) / 9));
+            suanshijg.innerHTML = z;
+            
+        </script>
+
+    </div>
+    <!-- END of Wrap -->
+
+
+</body>
+
+</html>

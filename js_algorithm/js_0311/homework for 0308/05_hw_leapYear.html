@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>请输入年份</p>
+    <p><input type="text" id="kuang"></p>
+    <button id="btn">检查是否是闰年</button>
+    <h1 id="resultbox"></h1>
+
+    <script>
+        var kuang = document.getElementById('kuang')
+        var btn = document.getElementById('btn')
+        var resultbox = document.getElementById('resultbox')
+
+        //监听事件
+
+        btn.onclick = function () {
+            
+            var year = Number(kuang.value);
+
+            if ( (year % 4 == 0 && year % 100 != 0) || (year % 100 == 0 && year % 400 == 0) ){
+                resultbox.innerHTML = '这是闰年';
+            } else{
+                resultbox.innerHTML = '这不是闰年';
+            }
+        };
+
+    </script> 
+
+</body>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        输入年龄
+    </p>
+    <p>
+        <input type="text" id="kuang">
+    </p>
+    <p>
+        <button id="btn">判断是否</button>
+    </p>
+
+
+    <script>
+        var kuang = document.getElementById('kuang');
+        var btn = document.getElementById('btn');
+
+
+        //事件监听
+        btn.onclick = function () {
+            //得到用户的年龄
+            age = Number(kuang.value);
+            //用if 语句来判断
+            if (age >= 18 && age <= 70) {
+                alert('能');
+            }
+            else {
+                alert('不能');
+            }
+            
+        };
+
+
+    </script>
+
+</body>
+
+</html>

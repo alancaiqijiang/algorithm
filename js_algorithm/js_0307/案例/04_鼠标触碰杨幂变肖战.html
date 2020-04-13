@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <img id="tupian" src="images/yangmi.jpg">
+
+    <script>
+        // 得到图片
+        var tupian = document.getElementById('tupian');
+
+        // 添加鼠标触碰事件，onmouseenter表示鼠标进入
+        tupian.onmouseenter = function() {
+            // 让它自己变图，它自己就是this，this这里表示它自己
+            // 改变src属性
+            this.src = 'images/xiaozhan.jpg';
+        };
+
+        // 添加鼠标离开事件，onmouseleave表示鼠标离开
+        tupian.onmouseleave = function() {
+            // 让它自己变图，它自己就是this，this这里表示它自己
+            // 改变src属性
+            this.src = 'images/yangmi.jpg';
+        };
+    </script>
+</body>
+</html>

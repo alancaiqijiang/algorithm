@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find the bomb number</title>
+</head>
+<body>
+    <script>
+        // create the bomb_number
+        var bomb = Number(Math.floor(Math.random()*100+1)) ;
+        // hint the range
+        var min = 1;
+        var max = 100;
+        
+        while(true){
+            // client input the number n
+            var n = Number(prompt(`please type a number, range is from${min}to${max}`));
+            // write the if logic
+            // to confine the input within max and min
+            if(n>=min && n <= max ){
+                if(n < bomb){
+                    alert('it is smaller than bomb');
+                    min = n + 1
+                }else if(n > bomb){
+                    alert('it is larger than bomb');
+                    max = n - 1
+                }else if(n == bomb){
+                    alert('wow bomb!!!');
+                    break;   
+                };
+            }else{
+                alert('the number you type is not within the domin')
+            }
+        };
+    </script>
+</body>
+</html>

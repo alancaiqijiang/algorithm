@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            margin: 10px 5px;
+            
+        }
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">按我变肖战</button>
+    <button id="btn2">按我变杨幂</button>
+    <div>
+        <img id="pic" src="images/yangmi.jpg" alt="">
+    </div>
+
+    <script>
+        // 得到按钮和图片
+        var btn1 = document.getElementById('btn1')
+        var btn2 = document.getElementById('btn2')
+        var pic = document.getElementById('pic')
+
+        btn1.onclick = function () {
+            pic.src = 'images/xiaozhan.jpg';
+        };
+        btn2.onclick = function () {
+            pic.src = 'images/yangmi.jpg';
+        };
+
+        pic.onmouseenter = function(){
+            pic.src = 'images/xiaozhan.jpg'
+        };
+        pic.onmouseleave = function(){
+            pic.src = 'images/yangmi.jpg'
+        };
+
+    </script>
+
+</body>
+
+</html>

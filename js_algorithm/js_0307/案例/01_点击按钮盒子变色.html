@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="anniu">按我让盒子变色</button>
+    <div class="box" id="box"></div>
+
+    <script>
+        // 这里就是书写JavaScript代码的地方
+        // 得到按钮，只有得到它，才能控制它。就要给按钮加id。
+        // 得到按钮并且存入变量anniu中
+        var anniu = document.getElementById('anniu');
+        // 得到盒子，只有得到它，才能控制它。就要给盒子加id。
+        // 得到盒子并且存入变量box中
+        var box = document.getElementById('box');
+
+        // 给按钮添加监听，on表示“当”，click表示“单击”
+        // onclick就表示当单击的时候
+        // function叫做“函数”，函数就是“事情”的封装。
+        // function的圆括号中要接收形参，先不用管，但是圆括号必不可少
+        // 大括号里面就是写“事儿”的地方
+        anniu.onclick = function() {
+            // 让盒子的样式的背景变为蓝色。等号表示赋值。
+            box.style.background = 'blue';
+        };
+    </script>
+</body>
+
+</html>

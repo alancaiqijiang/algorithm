@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="anniu1">红</button>
+    <button id="anniu2">蓝</button>
+    <button id="anniu3">黄</button>
+    <div class="box" id="box"></div>
+    
+    <script>
+        // 得到3个按钮和1个盒子
+        var anniu1 = document.getElementById('anniu1');
+        var anniu2 = document.getElementById('anniu2');
+        var anniu3 = document.getElementById('anniu3');
+        var box = document.getElementById('box');
+
+        // 按钮1的事件监听
+        anniu1.onclick = function() {
+            box.style.background = 'red';
+        }
+        
+        // 按钮2的事件监听
+        anniu2.onclick = function() {
+            box.style.background = 'blue';
+        }
+        
+        // 按钮3的事件监听
+        anniu3.onclick = function() {
+            box.style.background = 'yellow';
+        }
+    </script>
+</body>
+
+</html>

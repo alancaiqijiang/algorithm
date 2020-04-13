@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>小明的遭遇</p>
+    <p>请输入小明的英语成绩：<input type="text" id="eng"></p>
+    <p>请输入小明的数学成绩：<input type="text" id="math"></p>
+    <button id="btn">计算小明得结果</button>
+    
+
+
+    <script>
+        var eng = document.getElementById('eng')
+        var math = document.getElementById('math')
+        var btn = document.getElementById('btn')
+
+        //监听事件
+
+        btn.onclick = function () {
+            //事件的逻辑：穷举法4个事件
+            //事件1 如果小明得eng>= 90 & math< 80 则 alert('laptop')，事件2 eng> = 90 & math> = 80  则 alert(phone & laptop)
+            //事件3 如果小明得eng< 90 & math< 80 则 alert(挨揍)，事件4 eng< 90 & math> =80  则 alert('phone')
+           
+           var er = Number(eng.value);
+           var mr = Number(math.value);
+
+           if(er >= 90 && mr < 80){
+            alert('小明得到手提电脑');
+           }else if(er >= 90 && mr >=80){
+            alert('小明得到手机和电脑');
+           }else if(er <90 && mr < 80){
+            alert('小明得到挨揍');
+           }else{
+            alert('小明得到苹果手机');
+           }
+
+        };
+
+    </script>
+
+</body>
+
+</html>

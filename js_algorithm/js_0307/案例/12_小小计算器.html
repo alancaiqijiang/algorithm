@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 600px;
+            height: 300px;
+            border: 3px dotted rgb(204, 42, 42);
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>小小计算器</h1>
+        <p>
+            <input type="text" id="kuang1">
+        </p>
+        <p>
+            <input type="text" id="kuang2">
+        </p>
+        <div>
+            <button id="btn1">+</button>
+            <button id="btn2">-</button>
+            <button id="btn3">×</button>
+            <button id="btn4">÷</button>
+        </div>
+        <h1 id="h1">0</h1>
+    </div>
+
+    <script>
+        // 得到两个框本身，四个按钮，和一个h1
+        var kuang1 = document.getElementById('kuang1');
+        var kuang2 = document.getElementById('kuang2');
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var btn3 = document.getElementById('btn3');
+        var btn4 = document.getElementById('btn4');
+        var h1 = document.getElementById('h1');
+
+
+
+        // **********************************************************************
+        // 给加号按钮添加点击事件
+        btn1.onclick = function() {
+            // 得到两个框中的值，Number函数表示将值变为数字
+            var a = Number(kuang1.value);
+            var b = Number(kuang2.value);
+
+            // 计算和
+            var sum = a + b;
+            
+            // 显示结果，innerHTML今天下午介绍过，是输出语句的一种
+            h1.innerHTML = sum;
+        };
+        // **********************************************************************
+
+
+
+
+        // **********************************************************************
+        // 给减号按钮添加点击事件
+        btn2.onclick = function() {
+            // 得到两个框中的值，Number函数表示将值变为数字
+            var a = Number(kuang1.value);
+            var b = Number(kuang2.value);
+
+            // 计算差
+            var sum = a - b;
+            
+            // 显示结果，innerHTML今天下午介绍过，是输出语句的一种
+            h1.innerHTML = sum;
+        };
+        // **********************************************************************
+
+
+
+
+
+        // **********************************************************************
+        // 给乘号按钮添加点击事件
+        btn3.onclick = function() {
+            // 得到两个框中的值，Number函数表示将值变为数字
+            var a = Number(kuang1.value);
+            var b = Number(kuang2.value);
+
+            // 计算差
+            var sum = a * b;
+            
+            // 显示结果，innerHTML今天下午介绍过，是输出语句的一种
+            h1.innerHTML = sum;
+        };
+        // **********************************************************************
+
+
+
+        // **********************************************************************
+        // 给除号按钮添加点击事件
+        btn4.onclick = function() {
+            // 得到两个框中的值，Number函数表示将值变为数字
+            var a = Number(kuang1.value);
+            var b = Number(kuang2.value);
+
+            // 计算差
+            var sum = a / b;
+            
+            // 显示结果，innerHTML今天下午介绍过，是输出语句的一种
+            h1.innerHTML = sum;
+        };
+        // **********************************************************************
+    </script>
+</body>
+</html>

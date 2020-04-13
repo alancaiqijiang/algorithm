@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>请输入一个三位数</p>
+    <p><input type="text" id="narNum"></p>
+
+    <button id="btn">检查是否是水仙花数</button>
+
+    <script>
+        var narNum = document.getElementById('narNum')
+
+        var btn = document.getElementById('btn')
+
+        //监听事件
+
+        btn.onclick = function () {
+
+            var NN = Number(narNum.value);
+
+            //对这个三位数进行拆位
+            //个位
+            var gewei = NN % 10;
+            var shiwei = Math.floor(NN / 10) % 10;
+            var baiwei = Math.floor(NN / 100);
+            var reNum = Math.pow(gewei, 3) + Math.pow(shiwei, 3) + Math.pow(baiwei, 3);
+
+            if (reNum == NN) {
+                alert('是水仙花数');
+
+            } else if (reNum != NN) {
+                alert('不是水仙花数');
+
+            }; 
+
+        };
+
+    </script> 
+
+</body>
+</body>
+
+</html>

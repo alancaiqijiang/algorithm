@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业第一题</title>
+</head>
+
+<body>
+    <h1>作业第一题</h1>
+    <p>请输入您的身高(m) <input type="text" id="clientHeight"></p>
+    <p>请输入您的体重(kg) <input type="text" id="clientWeight"></p>
+    <div><button id="btn">计算</button></div>
+    <div><span>您的身体状况为：</span><span id="result"></span></div>
+
+    <script>
+        var Height = document.getElementById('clientHeight');
+        var Weight = document.getElementById('clientWeight');
+        var btn = document.getElementById('btn');
+        var jg = document.getElementById('result');
+
+        //事件监听 btn
+        btn.onclick = function () {
+            var H = Number(Height.value); 
+            var W = Number(Weight.value);
+            var BMI = W / Math.pow(H, 2);
+
+            var type = '';
+
+            if (BMI <= 18.5) {
+                type = '偏瘦';
+            } else if (BMI < 25) {
+                type = '正常';
+            } else if (BMI < 30) {
+                type = '偏胖';
+            } else {
+                type = '过度肥胖';
+            }
+
+            var BMI_Round = Math.round(BMI * 100) / 100;
+            //显示结果
+            result.innerHTML = '您的体型是' + type
+                    +'<br>' + '你的BMI指数为'+BMI_Round;
+        };
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>请输入您的年龄</p>
+    <input type="text" id='cAge'>
+    <p>请选择您的性别</p>
+    <input type="radio" name="sex" id="male">男
+    <input type="radio" name="sex" id="female">女
+    <p><button id="btn">判断是否能结婚</button></p>
+
+
+    <script>
+        var cAge = document.getElementById('cAge');
+        var male = document.getElementById('male');
+        var female = document.getElementById('female');
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function () {
+            var age = Number(cAge.value)
+            console.log(age)
+
+            //if male is tick
+            if (male.checked) {
+                // judge by his age
+                if (age < 22) {
+                    alert('不能结婚');
+                }
+                else {
+                    alert('能结婚');
+                }
+            } else if (female.checked) {
+                if (age < 20) {
+                    alert('不能结婚');
+                }
+                else {
+                    alert('能结婚');
+                }
+            } else {
+                alert('请选择性别');
+            }
+
+
+        };
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

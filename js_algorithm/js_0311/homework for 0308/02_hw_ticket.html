@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>请问您是平日入园还是周末入园</p>
+    <input type="radio" name="date" id="weekday">平日
+    <input type="radio" name="date" id="weekend">周末
+    <p>请输入成年人的数量：<input type="text" id="adult"></p>
+    <p>请输入儿童的数量：<input type="text" id="children"></p>
+    <button id="btn">计算票价</button>
+    <h1 id="price"></h1>
+
+
+
+
+    <script>
+        var weekday = document.getElementById('weekday')
+        var weekend = document.getElementById('weekend')
+
+        var btn = document.getElementById('btn')
+
+        //监听事件
+
+        btn.onclick = function () {
+            //事件的逻辑：
+            //如果为平日，则票价为 (adult * 50) + (children *30)  
+            //如果为周末，则票价为 (adult * 80) + (children *60)   
+            //故此需要知道adult和children的数量
+            var adult = document.getElementById('adult')
+            var children = document.getElementById('children')
+            var ad = Number(adult.value)
+            var ch = Number(children.value)
+            //定义价格为p
+            var p, adprice, chprice;
+            //测试一下 
+            console.log(ad, ch)
+            if (weekday.checked) {
+                adprice = 50;
+                chprice = 30;
+
+            } else if (weekend.checked) {
+                adprice = 80;
+                chprice = 60;
+
+            } else {
+                alert('请选择入园时间')
+            };
+            p = ad * adprice + ch * chprice;
+
+            price.innerHTML =
+                '<br>' + '  大人的人数为' + ad + ',每人' + adprice + '元/人，' + '共计票价' + ad * adprice + '元'
+                + '<br>' + ' 小孩的人数为' + ch + ',每人' + chprice + '元/人，' + '共计票价' + ch * chprice + '元'
+                + '<br>' + ' 总计' + p + '元';
+
+        };
+
+    </script>
+
+</body>
+
+</html>
