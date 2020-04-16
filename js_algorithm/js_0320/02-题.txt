@@ -1,0 +1,2 @@
+fun() = undefine
+console.log(a) 输出 10
