@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        // 得到canvas画布
+        var canvas = document.getElementById('canvas');
+        // 画布没有什么用，必须用画布创建渲染上下文才行
+        var ctx = canvas.getContext('2d');
+
+        // 小球类
+        function Ball(idx) {
+            // 自己的编号
+            this.idx = idx;
+            // 圆心
+            this.x = Math.random() * 600;
+            this.y = Math.random() * 400;
+            // 从数组中随机选择一个颜色
+            this.color = '#ccc';
+            this.r = 20;
+            // 透明度
+            this.opacity = 1;
+            // 随机它的x增量，不能随机出0、0
+            do {
+                this.dx = parseInt(Math.random() * 8) - 4;
+                this.dy = parseInt(Math.random() * 8) - 4;
+            } while (this.dx == 0 && this.dy == 0);
+
+            ballArr.push(this);
+        }
+        Ball.prototype.update = function () {
+            // 改变自己的x、y（圆心）
+            this.x += this.dx;
+            this.y += this.dy;
+
+            // 如果小球出去了，就从相反的边重新进来
+            if (this.x > 600 + this.r) {
+                this.x = -this.r;
+            } else if (this.y > 400 + this.r) {
+                this.y = -this.r;
+            } else if (this.y < -this.r) {
+                this.y = 400 + this.r;
+            } else if (this.x < -this.r) {
+                this.x = 600 + this.r;
+            }
+        }
+        Ball.prototype.render = function () {
+            // 开始绘制
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+            ctx.fillStyle = this.color;
+            // 填充
+            ctx.fill();
+            // 靠近的小球连线，所以我们就要遍历整个数组，寻找哪个小球离我近
+            for (var i = 0; i < this.idx; i++) {
+                if (Math.abs(ballArr[i].x - this.x) <= 100 && Math.abs(ballArr[i].y - this.y) <= 100) {
+                    // 连线
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(ballArr[i].x, ballArr[i].y);
+                    ctx.strokeStyle = '#ccc';
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // 小球数组
+        var ballArr = [];
+        // 帧编号
+        var f = 0;
+        // 定时器，不管有多少小球，定时器只有1个。
+        setInterval(function () {
+            // 清屏
+            ctx.clearRect(0, 0, 600, 400);
+
+            // 帧编号加1
+            f++;
+            // 显示帧编号
+            ctx.font = '25px 宋体';
+            ctx.fillText(f, 10, 20);
+
+            // 遍历数组，调用小球的update方法和render方法
+            for (let i = 0; i < ballArr.length; i++) {
+                ballArr[i].update();
+                // 写成短路的目的是：update方法中可能删除了这个小球，所以这里要判断一下小球仍然存在
+                ballArr[i] && ballArr[i].render();
+            }
+        }, 20);
+
+        // 循环创建50个小球
+        var count = 50;
+        while (count--) {
+            new Ball(count);
+        }
+    </script>
+</body>
+
+</html>

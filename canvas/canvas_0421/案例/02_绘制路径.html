@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        // 得到canvas画布
+        var canvas = document.getElementById('canvas');
+        // 画布没有什么用，必须用画布创建渲染上下文才行
+        var ctx = canvas.getContext('2d');
+        
+        // 开始绘制路径
+        ctx.beginPath();
+        // 移动绘图点到100,100点
+        ctx.moveTo(100, 100);
+        // 绘制一条线
+        ctx.lineTo(200, 200);
+        // 再绘制一条线
+        ctx.lineTo(200, 300);
+        // 再绘制一条线
+        ctx.lineTo(400, 300);
+        // 再绘制一条线
+        ctx.lineTo(400, 100);
+        // 自动闭合
+        ctx.closePath();
+        // 改变线条的颜色
+        ctx.strokeStyle = 'red';
+        // 改变线条的宽度
+        ctx.lineWidth = 10;
+        // 线条是虚拟的，我们必须真的让它绘制才行
+        ctx.stroke();
+        // 填充颜色
+        ctx.fillStyle = 'skyblue';
+        // 填充
+        ctx.fill();
+
+        // 再次绘制一个线段
+        ctx.beginPath();
+        ctx.moveTo(180, 150);
+        ctx.lineTo(290, 60);
+        ctx.lineTo(290, 160);
+        ctx.closePath();
+        ctx.strokeStyle = 'orange';
+        ctx.stroke();
+        ctx.fillStyle = '#f38';
+        ctx.fill();
+    </script>
+</body>
+</html>

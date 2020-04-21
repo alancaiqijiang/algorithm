@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        // 得到canvas画布
+        var canvas = document.getElementById('canvas');
+        // 画布没有什么用，必须用画布创建渲染上下文才行
+        var ctx = canvas.getContext('2d');
+
+        // 全部颜色数组
+        var allcolor = ['#66CCCC', '#CCFF66', '#FF99CC', '#FF9900', '#CCFF00', '#66CCCC', '#FFFF66'];
+
+        // 小球类
+        function Ball(x, y) {
+            // 圆心
+            this.x = x;
+            this.y = y;
+            // 从数组中随机选择一个颜色
+            this.color = allcolor[parseInt(Math.random() * allcolor.length)];
+            this.r = 20;
+            // 透明度
+            this.opacity = 1;
+            // 随机它的x增量，不能随机出0、0
+            do {
+                this.dx = parseInt(Math.random() * 8) - 4;
+                this.dy = parseInt(Math.random() * 8) - 4;
+            } while (this.dx == 0 && this.dy == 0);
+
+            ballArr.push(this);
+        }
+        Ball.prototype.update = function () {
+            // 改变自己的半径
+            this.r += 0.1;
+            // 改变自己的透明度
+            this.opacity -= 0.01;
+            if (this.opacity <= 0) {
+                // 如果透明度小于了0，就要让它自己把自己从数组中删除
+                for (var i = 0; i < ballArr.length; i++) {
+                    // 遍历数组，寻找哪一项是自己的实例
+                    if (ballArr[i] == this) {
+                        ballArr.splice(i, 1);
+                    }
+                }
+            }
+
+            // 改变自己的x、y（圆心）
+            this.x += this.dx;
+            this.y += this.dy;
+        }
+        Ball.prototype.render = function () {
+            // 开始绘制
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+            ctx.fillStyle = this.color;
+
+            // 改变透明度，固定写法
+            // 保存当前画布状态
+            ctx.save();
+            // 改变透明度
+            ctx.globalAlpha = this.opacity;
+            // 填充
+            ctx.fill();
+            // 恢复，不影响别的小球
+            ctx.restore();
+        }
+
+        // 小球数组
+        var ballArr = [];
+        // 帧编号
+        var f = 0;
+        // 定时器，不管有多少小球，定时器只有1个。
+        setInterval(function () {
+            // 清屏
+            ctx.clearRect(0, 0, 600, 400);
+
+            // 帧编号加1
+            f++;
+            // 显示帧编号
+            ctx.font = '25px 宋体';
+            ctx.fillText(f, 10, 20);
+
+            // 遍历数组，调用小球的update方法和render方法
+            for (let i = 0; i < ballArr.length; i++) {
+                ballArr[i].update();
+                // 写成短路的目的是：update方法中可能删除了这个小球，所以这里要判断一下小球仍然存在
+                ballArr[i] && ballArr[i].render();
+            }
+        }, 20);
+
+        // 鼠标事件
+        canvas.onmousemove = function (e) {
+            // 用鼠标的指针位置实例出小球
+            new Ball(e.offsetX, e.offsetY);
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初步认识canvas</title>
+    <style>
+        canvas {
+            border: solid 1px black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas_try1" width=900 height=600;></canvas>
+    <script>
+        // 拿到api
+        var canvas_try1 = document.getElementById('canvas_try1');
+        // 渲染上下文
+        var ctx = canvas_try1.getContext('2d');
+        // 接下来使用ctx来执行绘图，采用path()
+        ctx.beginPath();
+        ctx.fillStyle = 'red';
+        ctx.arc(150, 150, 100,0,Math.PI *2, true);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(150,150,35,0,Math.PI *2,true);
+        ctx.stroke();
+        // 每次都需要begin和close path，否则会出现其他的线
+
+
+
+    </script>
+</body>
+
+</html>

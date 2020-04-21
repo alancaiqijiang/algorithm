@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按我出现一个小球</button>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        // 得到canvas画布
+        var canvas = document.getElementById('canvas');
+        // 画布没有什么用，必须用画布创建渲染上下文才行
+        var ctx = canvas.getContext('2d');
+
+        // 小球类
+        function Ball(x, y, r, color, speed) {
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.color = color;
+            this.speed = speed;
+            // 在new出小球的时候，要自动的把小球放入到小球数组中
+            ballArr.push(this);
+        }
+        // 小球的更新方法
+        Ball.prototype.update = function () {
+            this.x += this.speed;
+        }
+        // 小球的渲染方法
+        Ball.prototype.render = function () {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+
+
+        // 帧编号
+        var f = 0;
+        // 小球数组，数组中放的是小球的实例而不是类
+        var ballArr = [];
+
+        // 得到按钮
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            new Ball(100, 100, 30, 'red', 3);
+        }
+
+        // 定时器，不管有多少小球，定时器只有1个。
+        setInterval(function () {
+            // 清屏
+            ctx.clearRect(0, 0, 600, 400);
+
+            // 帧编号加1
+            f++;
+            // 显示帧编号
+            ctx.font = '25px 宋体';
+            ctx.fillText(f, 10, 20);
+
+            // 遍历数组，调用小球的update方法和render方法
+            for (let i = 0; i < ballArr.length; i++) {
+                ballArr[i].update();
+                ballArr[i].render();
+            }
+        }, 20);
+    </script>
+</body>
+
+</html>

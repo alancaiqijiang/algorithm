@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        // 得到canvas画布
+        var canvas = document.getElementById('canvas');
+        // 画布没有什么用，必须用画布创建渲染上下文才行
+        var ctx = canvas.getContext('2d');
+
+        // 小女孩类，构造函数的首字母一般来说应该大写
+        function Girl() {
+            this.x = 100;
+            this.y = 100;
+            // 步子
+            this.step = 0;
+            // 状态量，是否在行走
+            this.isMove = false;
+            // 状态量，它的方向，和精灵图一致，0、1、2、3分别表示下左右上
+            this.direction = 2;
+        }
+        // 更新方法
+        Girl.prototype.update = function () {
+            // 如果自己在运动，这就是状态模式，就是在这种状态下，进行何种操作
+            if (this.isMove) {
+                // 分类讨论，根据自己的方向改变x、y，状态模式
+                if (this.direction == 0) {
+                    this.y++;
+                } else if (this.direction == 1) {
+                    this.x--;
+                } else if (this.direction == 2) {
+                    this.x++;
+                } else if (this.direction == 3) {
+                    this.y--;
+                }
+
+                // 如果帧编号是3的倍数，我们迈步，不是每帧都迈步
+                if (f % 3 == 0) {
+                    this.step++;
+                }
+                // 设计师只给了我们8帧形象
+                if (this.step > 7) {
+                    this.step = 0;
+                }
+            }
+        };
+        // 渲染方法
+        Girl.prototype.render = function () {
+            ctx.drawImage(img, 79 * this.step, 108 * this.direction, 79, 108, this.x, this.y, 79, 108);
+        };
+        // 行走
+        Girl.prototype.run = function () {
+            this.isMove = true;
+        }
+        // 停止
+        Girl.prototype.stop = function () {
+            this.isMove = false;
+            this.step = 0;
+        }
+        // 改变方向
+        Girl.prototype.changeDirection = function (d) {
+            this.direction = d;
+        }
+
+        // 产生一个实例
+        var alice = new Girl();
+
+        // 帧编号
+        var f = 0;
+        // 思路：只有图片加载好了，定时器才开始
+        var img = new Image();
+        img.onload = function () {
+            // 定时器
+            setInterval(function () {
+                // 帧编号加1
+                f++;
+                // 清屏
+                ctx.clearRect(0, 0, 600, 400);
+                // 打印帧编号
+                ctx.fillText(f, 10, 20);
+
+                // 调用alice的update方法、render方法
+                alice.update();
+                alice.render();
+            }, 20);
+        }
+        img.src = 'images/girl.png';
+
+        // 添加键盘监听
+        document.onkeydown = function (e) {
+            if (e.keyCode == 37) {
+                alice.changeDirection(1);
+                alice.run();
+            } else if (e.keyCode == 38) {
+                alice.changeDirection(3);
+                alice.run();
+            } else if (e.keyCode == 39) {
+                alice.changeDirection(2);
+                alice.run();
+            } else if (e.keyCode == 40) {
+                alice.changeDirection(0);
+                alice.run();
+            }
+        }
+
+        document.onkeyup = function (e) {
+            if (e.keyCode >= 37 && e.keyCode <= 40) {
+                alice.stop();
+            }
+        }
+    </script>
+</body>
+
+</html>

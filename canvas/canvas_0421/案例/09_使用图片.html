@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        // 得到canvas画布
+        var canvas = document.getElementById('canvas');
+        // 画布没有什么用，必须用画布创建渲染上下文才行
+        var ctx = canvas.getContext('2d');
+
+        // 实例化一个图片
+        var img = new Image();
+        // 设置onload事件
+        img.onload = function () {
+            ctx.drawImage(img, 243, 111, 130, 112, 100, 100, 130 * 2, 112 * 2);
+        }
+        // 设置src，一旦设置src，图片就开始加载了，就会慢慢onload
+        img.src = 'images/1.jpg';
+    </script>
+</body>
+
+</html>
