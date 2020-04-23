@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: #333;
+        }
+
+        td {
+            width: 30px;
+            height: 30px;
+            border: solid 1px black;
+        }
+
+        /* 先把颜色复制粘贴下 */
+        td.c1 {
+            /* 以后学习渐变色，你先抄老师的 */
+            background: -webkit-linear-gradient(bottom right, rgb(182, 44, 44), rgb(250, 6, 6));
+        }
+
+        td.c2 {
+            /* 以后学习渐变色，你先抄老师的 */
+            background: -webkit-linear-gradient(bottom right, rgb(255, 157, 0), rgb(230, 201, 42));
+        }
+
+        td.c3 {
+            /* 以后学习渐变色，你先抄老师的 */
+            background: -webkit-linear-gradient(bottom right, rgb(239, 243, 6), rgb(213, 243, 41));
+        }
+
+        td.c4 {
+            /* 以后学习渐变色，你先抄老师的 */
+            background: -webkit-linear-gradient(bottom right, rgb(11, 246, 3), rgb(94, 235, 129));
+        }
+
+        td.c5 {
+            /* 以后学习渐变色，你先抄老师的 */
+            background: -webkit-linear-gradient(bottom right, rgb(0, 225, 255), rgb(62, 233, 248));
+        }
+
+        td.c6 {
+            /* 以后学习渐变色，你先抄老师的 */
+            background: -webkit-linear-gradient(bottom right, rgb(0, 98, 255), rgb(79, 137, 243));
+        }
+
+        td.c7 {
+            /* 以后学习渐变色，你先抄老师的 */
+            background: -webkit-linear-gradient(bottom right, rgb(98, 0, 255), rgb(146, 78, 235));
+        }
+    </style>
+</head>
+
+<body>
+    <!--上来先建个黑色的图框来，应该是20行12列,在id一下来获取它 -->
+    <table id="table">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        // 先得到一个表格
+        var table = document.getElementById('table');
+        // 接下来先染色，让我们选中的某个方格能够填充颜色
+        // table.getElementsByTagName('tr')[2].getElementsByTagName('td')[2].className = 'c1'
+        // 成功以后把他封道函数里，方便调用
+        // function ranse(i,j) {
+        //     table.getElementsByTagName('tr')[i].getElementsByTagName('td')[j].className = 'c1'
+        // };
+        // ranse(16,1);
+        // ok, 染色没啥问题了
+        // 接着咱需要然不同的颜色，那么就把classname里的c1的值，让他成为变量，然后可以更改颜色
+        function ranse(i, j, k) {
+            table.getElementsByTagName('tr')[i].getElementsByTagName('td')[j].className = 'c' + k
+        };
+        // 来测试一下
+        // ranse(16,1,3);
+        // ranse(13,1,6);
+        // ranse(12,7,2);
+        // ok,测试以后发现没有问题
+
+        // 接下来要写俄罗斯方块里的方块了
+        // 方块是个2维数组
+        // 比如我写个L块的，染成2色
+        var block = [
+            [0, 0, 0, 0],
+            [0, 2, 0, 0],
+            [0, 2, 0, 0],
+            [0, 2, 2, 0]
+        ];
+        // 想办法这个颜色画进去,用ranse的这个function
+
+        // for (i = 0; i < 4; i++) {
+        //     for (j = 0; j < 4; j++) {
+        //         // 判断下，如果不是0,就画进去
+        //         if (block[i][j] != 0) {
+        //             ranse(i, j, block[i][j]);
+        //         }
+        //     }
+        // }
+        // 测试以后非常成功，开心，把它封装起来
+        function drawBar(a, b) {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    // 判断下，如果不是0,就画进去
+                    if (block[i][j] != 0) {
+                        ranse(i + a, j + b, block[i][j]);
+                    };
+                };
+            };
+        };
+
+        // drawBar(0,0);
+
+        //接着要让砖头往下掉, 往下掉就是行++ 呗
+        var row = 0;
+        var col = 4;
+        // 来清屏函数
+        function clearCloth() {
+            for (var i = 0; i < 20; i++) {
+                for (var j = 0; j < 12; j++) {
+                    // 直接清0
+                    ranse(i, j, 0);
+                };
+            };
+        };
+        // 来个地图
+        var map = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0],
+            [0, 0, 0, 4, 4, 4, 0, 1, 1, 0, 0, 0],
+            [0, 0, 0, 2, 3, 3, 6, 7, 0, 0, 0, 0],
+            [0, 0, 0, 3, 2, 3, 5, 7, 1, 1, 0, 0]
+        ];
+        // 做了地图以后，把地图也每个也画一下
+        function drawMap() {
+            for (var i = 0; i < 20; i++) {
+                for (var j = 0; j < 12; j++) {
+                    // 判断下，如果不是0,就画进去
+                    if (map[i][j] != 0)
+                        ranse(i, j, map[i][j]);
+                };
+            };
+        };
+         
+        function judgestop() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    // 判断这个数字，如果，自己不是0,然后呢地图上也不是0，那么卡主他
+                    if (block[i][j] != 0 && map[i +row +1][j +col] !=0) {
+                        var fall = false;
+                    };
+                };
+            };
+        };
+        
+
+        drawBar(row,col);
+        drawMap();
+        // 计时器
+        setInterval(function () {
+            // 清屏
+            clearCloth();
+            // 先画一个出来
+            drawBar(row, col);
+            drawMap();
+            // 行++ 以后把他体现在这个drawBar这个函数里
+            // 现在要让行++
+            var fall = true;
+            judgestop();
+            if(fall){
+                row++;
+            }
+            
+        }, 200);
+        // 到这这里都没什么问题，然后我需要清屏，没画一次，就要把整个画布清屏
+        // 那么我需要写个清屏的函数，然后调用下，那么清屏函数应该写在计时器的上面
+        // 阶段性成功，接下来要怼算法了。
+        // 怼啥算法？ 就是判定下落以后啊，就是如果碰到别的行有东西的时候，就挂住不动
+        // 判定的方式就是拿当前的这个4x4的方块去跟下一个方块进行比较。啥都不说了，先造个地图出来
+        // 地图画好了，咱要开始比较了
+    </script>
+
+</body>
+
+</html>
