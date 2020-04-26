@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* 重新自己手打一遍 */
         table {
             border-collapse: collapse;
             margin-top: 10px;
@@ -57,8 +58,8 @@
 </head>
 
 <body>
-    <!--上来先建个黑色的图框来，应该是20行12列,在id一下来获取它 -->
-    <table id="table">
+    <!-- 一言不合就重新打一遍俄罗斯方块 -->
+    <table id='table'>
         <tr>
             <td></td>
             <td></td>
@@ -341,72 +342,131 @@
         </tr>
     </table>
     <script>
-        // 先得到一个表格
+        // 先得到表格
         var table = document.getElementById('table');
-        // 接下来先染色，让我们选中的某个方格能够填充颜色
-        // table.getElementsByTagName('tr')[2].getElementsByTagName('td')[2].className = 'c1'
-        // 成功以后把他封道函数里，方便调用
-        // function ranse(i,j) {
-        //     table.getElementsByTagName('tr')[i].getElementsByTagName('td')[j].className = 'c1'
-        // };
-        // ranse(16,1);
-        // ok, 染色没啥问题了
-        // 接着咱需要然不同的颜色，那么就把classname里的c1的值，让他成为变量，然后可以更改颜色
-        function ranse(i, j, k) {
-            table.getElementsByTagName('tr')[i].getElementsByTagName('td')[j].className = 'c' + k
-        };
-        // 来测试一下
-        // ranse(16,1,3);
-        // ranse(13,1,6);
-        // ranse(12,7,2);
-        // ok,测试以后发现没有问题
-
-        // 接下来要写俄罗斯方块里的方块了
-        // 方块是个2维数组
-        // 比如我写个L块的，染成2色
-        var block = [
-            [0, 0, 0, 0],
-            [0, 2, 0, 0],
-            [0, 2, 0, 0],
-            [0, 2, 2, 0]
-        ];
-        // 想办法这个颜色画进去,用ranse的这个function
-
-        // for (i = 0; i < 4; i++) {
-        //     for (j = 0; j < 4; j++) {
-        //         // 判断下，如果不是0,就画进去
-        //         if (block[i][j] != 0) {
-        //             ranse(i, j, block[i][j]);
-        //         }
-        //     }
-        // }
-        // 测试以后非常成功，开心，把它封装起来
-        function drawBar(a, b) {
+        //************************************************ 
+        //                 函数定义区域  
+        //************************************************ 
+        // 染色函数
+        function fillColor(row, col, color) {
+            table.getElementsByTagName('tr')[row].getElementsByTagName('td')[col].className = 'c' + color;
+        }
+        // 画砖头
+        function drawElement() {
             for (var i = 0; i < 4; i++) {
                 for (var j = 0; j < 4; j++) {
-                    // 判断下，如果不是0,就画进去
-                    if (block[i][j] != 0) {
-                        ranse(i + a, j + b, block[i][j]);
-                    };
+                    if (element[i][j] != 0)
+                        fillColor(i + row, j + col, element[i][j]);
                 };
             };
         };
-
-        // drawBar(0,0);
-
-        //接着要让砖头往下掉, 往下掉就是行++ 呗
-        var row = 0;
-        var col = 4;
-        // 来清屏函数
-        function clearCloth() {
+        // 清屏
+        function clearScreen() {
             for (var i = 0; i < 20; i++) {
                 for (var j = 0; j < 12; j++) {
-                    // 直接清0
-                    ranse(i, j, 0);
+                    fillColor(i, j, 0);
+                };
+            };
+        }
+        // 画地图
+        function drawMap() {
+            for (var i = 0; i < 20; i++) {
+                for (var j = 0; j < 12; j++) {
+                    if (map[i][j] != 0)
+                        fillColor(i, j, map[i][j]);
                 };
             };
         };
-        // 来个地图
+        // 死在地图上
+        function dieInMap() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if (element[i][j] != 0)
+                        map[i + row][j + col] = element[i][j];
+                };
+            };
+        };
+        // 是否停住
+        function judgeStop() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if (element[i][j] != 0 && map[i + row + 1][j + col] != 0)
+                        return  false;
+                };
+            };
+            return true;
+        }
+        // 随机生成任意的砖头
+        function randomBlock() {
+            var n = parseInt(Math.random()*7);
+            element = allblock[n];
+        }
+        // 旋转函数
+        function rotate() {
+            
+        };
+
+        //************************************************ 
+        //                 全局变量 
+        //************************************************ 
+        
+        // 砖头的变量先定义
+        var element;
+        // 列出所有砖头的可能性
+        var allblock = [
+                [
+                    [0,1,0,0],
+                    [0,1,0,0],
+                    [0,1,1,0],
+                    [0,0,0,0]
+
+                ],
+                [
+                    [0,2,0,0],
+                    [0,2,0,0],
+                    [0,2,0,0],
+                    [0,2,0,0]
+
+                ],
+                [
+                    [0,3,0,0],
+                    [0,3,0,0],
+                    [3,3,0,0],
+                    [0,0,0,0]
+
+                ],
+                [
+                    [4,4,4,0],
+                    [0,4,0,0],
+                    [0,0,0,0],
+                    [0,0,0,0]
+
+                ],
+                [
+                    [5,5,0,0],
+                    [0,5,5,0],
+                    [0,0,0,0],
+                    [0,0,0,0]
+
+                ],
+                [
+                    [0,6,6,0],
+                    [6,6,0,0],
+                    [0,0,0,0],
+                    [0,0,0,0]
+
+                ],
+                [
+                    [0,0,0,0],
+                    [0,1,1,0],
+                    [0,1,1,0],
+                    [0,0,0,0]
+
+                ]
+            ];
+
+        // 画个地图
+        // 底部有一个最后4 row 用来垫地面，让最差的情况下也能判定砖头不下落
         var map = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -428,83 +488,60 @@
             [0, 0, 2, 4, 4, 4, 0, 1, 1, 0, 0, 0],
             [0, 0, 2, 2, 3, 3, 6, 7, 0, 0, 0, 0],
             [0, 1, 1, 3, 2, 3, 5, 7, 1, 1, 0, 0],
-            [1, 1, 1, 3, 2, 3, 5, 7, 1, 1, 1, 1],
-            [1, 1, 1, 3, 2, 3, 5, 7, 1, 1, 1, 1],
-            [1, 1, 1, 3, 2, 3, 5, 7, 1, 1, 1, 1],
-            [1, 1, 1, 3, 2, 3, 5, 7, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ];
-        // 做了地图以后，把地图也每个也画一下
-        function drawMap() {
-            for (var i = 0; i < 20; i++) {
-                for (var j = 0; j < 12; j++) {
-                    // 判断下，如果不是0,就画进去
-                    if (map[i][j] != 0)
-                        ranse(i, j, map[i][j]);
-                };
-            };
-        };
+        // 接着画砖头并封装到函数里
 
-        function judgeStop(block,map) {
-            for (var i = 0; i < 4; i++) {
-                for (var j = 0; j < 4; j++) {
-                    if (block[i][j] != 0 && map[i + row + 1][j + col] != 0) {
-                        console.log(block[i][j], map[i + row + 1][j + col]);
-                        return false;
-                        
-                    } else {
-                        console.log(block[i][j], map[i + row + 1][j + col]);
-                        return true;
-                        
-                    }
-                };
-            };
-        };
-        drawBar(row, col);
+        // 用来变化行和列
+        var row = 0;
+        var col = 4;
+        // 用来判断能否下落
+        var canfall;
+        //************************************************ 
+        //                 调用区域 
+        //************************************************ 
+        
+        // 调用函数把element先生成出来
+        randomBlock();
+        // 然后把砖头element画到map上
+        drawElement(row, col);
+        // 同时生成map
         drawMap();
-        var canfall = true;
-        // 计时器
+
+        //************************************************ 
+        //                 问题区域  
+        //************************************************ 
+        
+        //************************************************ 
+        //                 定时器区域  
+        //************************************************ 
         setInterval(function () {
-            
-            canfall = judgeStop(block,map);
-            // console.log(canfall);
-            //判断能否下落
-            // for (var i = 0; i < 4; i++) {
-            //     for (var j = 0; j < 4; j++) {
-            //         if (block[i][j] != 0 && map[i + row + 1][j + col] != 0) {
-            //             canfall = false;
-            //         };
-            //     };
-            // };
-            // console.log(canfall)
+
+            canfall = judgeStop();
             if (canfall) {
+                // 如果可以下落，则下落
                 row++;
             } else {
-                // 死在地图上
-                for (var i = 0; i < 4; i++) {
-                    for (var j = 0; j < 4; j++) {
-                        if (block[i][j] != 0) {
-                            map[i + row][j + col] = block[i][j]
-                        };
-                    };
-                };
+                // 如果不能下落，需要他死再地图上面
+                dieInMap()
+                // 重新有砖头下落
                 row = 0;
+                randomBlock();
             }
+
             // 清屏
-            clearCloth();
-            // 先画一个出来
-            drawBar(row, col);
+            clearScreen();
+            // 画砖头
+            drawElement(row, col);
+            // 画地图
             drawMap();
 
+        }, 200);
 
-        }, 1000);
-        // 到这这里都没什么问题，然后我需要清屏，没画一次，就要把整个画布清屏
-        // 那么我需要写个清屏的函数，然后调用下，那么清屏函数应该写在计时器的上面
-        // 阶段性成功，接下来要怼算法了。
-        // 怼啥算法？ 就是判定下落以后啊，就是如果碰到别的行有东西的时候，就挂住不动
-        // 判定的方式就是拿当前的这个4x4的方块去跟下一个方块进行比较。啥都不说了，先造个地图出来
-        // 地图画好了，咱要开始比较了
     </script>
-
 </body>
 
 </html>
