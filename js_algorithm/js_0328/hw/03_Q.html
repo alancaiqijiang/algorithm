@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3</title>
+</head>
+<body>
+    <h2>我喜欢的明星</h2>
+    <button id="btn1">把选择喜欢改为不喜欢</button>
+    <ul id="list1">
+        <li ><input type="checkbox" value="王俊凯">王俊凯</li>
+        <li ><input type="checkbox" value="王一博">王一博</li>
+        <li ><input type="checkbox" value="易烊千玺">易烊千玺</li>
+    </ul>
+    <h2>我不喜欢的明星</h2>
+    <button id="btn2">把选择不喜欢改为喜欢</button>
+    <ul id="list2">
+        <li ><input type="checkbox" value="周杰伦">周杰伦</li>
+        <li ><input type="checkbox" value="陈奕迅">陈奕迅</li>
+    </ul>
+    <script>
+        var btn1 = document.getElementById('btn1')
+        var btn2 = document.getElementById('btn2')
+        var list1 = document.getElementById('list1')
+        var list2 = document.getElementById('list2')
+        
+        list1.onclick = function(e){
+            if(e.target.nodeName.toLowerCase() == 'input'){
+                list2.appendChild(e.target.parentNode);
+            }
+        }
+        list2.onclick = function(e){
+            if(e.target.nodeName.toLowerCase() == 'input'){
+                list1.appendChild(e.target.parentNode);
+            }
+        }
+    </script>
+</body>
+</html>

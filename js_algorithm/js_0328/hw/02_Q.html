@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #jiayou {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn1">字号增加</button>
+    <button id="btn2">字号减小</button>
+    <p id="zihao"></p>
+    <h1 id="jiayou">大家一定要加油，不要放弃</h1>
+
+    <script>
+        var btn1 = document.getElementById('btn1')
+        var btn2 = document.getElementById('btn2')
+        var zihao = document.getElementById('zihao')
+        var jiayou = document.getElementById('jiayou')
+
+        var font = 22;
+
+        btn1.onclick = function () {
+            font += 2;
+            jiayou.style.fontSize = font + 'px';
+            console.log(font);
+            zihao.innerHTML = '当前字号为' + font
+
+        }
+        btn2.onclick = function () {
+            font -= 2;
+            jiayou.style.fontSize = font + 'px';
+            console.log(font);
+            zihao.innerHTML = '当前字号为' + font
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

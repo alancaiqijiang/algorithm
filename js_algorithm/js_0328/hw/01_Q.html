@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="kuang" type="text">
+    <button id="btn">添加</button>
+    <ul id="list">
+
+    </ul>
+
+    <script>
+        var btn = document.getElementById('btn')
+        var kuang = document.getElementById('kuang')
+        var list = document.getElementById('list')
+
+        btn.onclick = function(){
+            var li = document.createElement('li')
+            li.innerHTML = kuang.value + '<button>删除</button>'; 
+            list.appendChild(li)
+        }
+       
+       list.onclick = function(e){
+           if(e.target.nodeName.toLowerCase() == 'button'){
+               list. removeChild(e.target.parentNode);
+           };
+
+       }
+        
+    </script>
+</body>
+</html>
